@@ -31,8 +31,7 @@
                     <?php $i = 1; ?>
                     <?php foreach ($queue_id as $q) : ?>
                     <tr>
-                        <th scope="row"><?= $i; ?></th>
-                        <td><?= $q['queue_id']; ?></td>
+                        <th scope="row"><?= $q['queue_id']; ?></th>
                         <td><?= $q['cust_id']; ?></td>
                         <td><?= $q['queue_joinqueuetime']; ?></td>
                         <td><?= $q['queue_waitingtime']; ?></td>
@@ -41,9 +40,8 @@
 
 
                         <td>
-                            <a href="<?= base_url('admin/roleaccess/') . $q['queue_id']; ?>" class="badge badge-warning">access</a>
-                            <a href="" class="badge badge-success">edit</a>
-                            <a href="" class="badge badge-danger">delete</a>
+                            <a href="" class="badge badge-success">certify</a>
+                            <a href="" class="badge badge-danger">remove</a>
                         </td>
                     </tr>
                     <?php $i++; ?>
