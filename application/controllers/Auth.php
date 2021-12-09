@@ -84,6 +84,8 @@ class Auth extends CI_Controller
             $this->load->view('templates/auth_header', $data);
             $this->load->view('auth/registration');
             $this->load->view('templates/auth_footer');
+
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">GAGAL! your account has been created. Please activate your account</div>');
             
         } else { //form validasi berhasil didaftarkan
             $email = $this->input->post('email', true);
@@ -95,22 +97,24 @@ class Auth extends CI_Controller
                 'role_id' => 2,
                 'is_active' => 0,
                 'date_created' => time()
+
+                
             ];
 
-            // siapkan token
-            $token = base64_encode(random_bytes(32));
-            $user_token = [
-                'email' => $email,
-                'token' => $token,
-                'date_created' => time()
-            ];
+            // // siapkan token
+            // $token = base64_encode(random_bytes(32));
+            // $user_token = [
+            //     'email' => $email,
+            //     'token' => $token,
+            //     'date_created' => time()
+            // ];
 
-            $this->db->insert('user', $data);
-            $this->db->insert('user_token', $user_token);
+             $this->db->insert('user', $data);
+            // $this->db->insert('user_token', $user_token);
 
-            $this->_sendEmail($token, 'verify');
-
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please activate your account</div>');
+           #$this->_sendEmail($token, 'verify');
+           $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please activate your account</div>');
+           
             redirect('auth');
         }
     }
