@@ -9,15 +9,20 @@ class Admin extends CI_Controller
         is_logged_in();
     }
 
+
+    
+//This is for QueueList Dashboard
     public function index()
     {
-        $data['title'] = 'Dashboard';
+        $data['title'] = 'Queue List';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        $data['queue_id'] = $this->db->get('vq_queue')->result_array();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/index', $data);
+        $this->load->view('admin/index.php', $data);
         $this->load->view('templates/footer');
     }
 
@@ -35,6 +40,8 @@ class Admin extends CI_Controller
         $this->load->view('admin/role', $data);
         $this->load->view('templates/footer');
     }
+
+   
 
 
     public function roleAccess($role_id)
@@ -75,4 +82,7 @@ class Admin extends CI_Controller
 
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Access Changed!</div>');
     }
+
+   
+
 }
