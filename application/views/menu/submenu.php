@@ -14,7 +14,7 @@
             </div>
             <?php endif; ?>
 
-            <?= $this->session->flashdata('message'); ?>
+            
 
             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newSubMenuModal">Add New Submenu</a>
 
