@@ -3,9 +3,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin extends CI_Controller
 {
+
+
     public function __construct()
-    {
+    {       
         parent::__construct();
+        $this->load->helper('url');
+		$this->load->model('Queue_model');
+		$this->load->helper('form');
+		$this->load->library('form_validation');
         is_logged_in();
     }
 
@@ -14,17 +20,51 @@ class Admin extends CI_Controller
 //This is for QueueList Dashboard
     public function index()
     {
-        $data['title'] = 'Queue List';
+
+        $QueueModel = new Queue_model();
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['title'] = 'Queue List';
 
-        $data['queue_id'] = $this->db->get('vq_queue')->result_array();
+        $data['queues'] = $this->Queue_model->get_all();
 
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/sidebar', $data);
-        $this->load->view('templates/topbar', $data);
-        $this->load->view('admin/index.php', $data);
-        $this->load->view('templates/footer');
+
+			$this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('admin/index.php', $data);
+            $this->load->view('templates/footer');
+		
     }
+
+
+
+    public function remove() {	
+		$qid = $this->uri->segment(3);
+		$this->Queue_model->delete($qid);
+		$this->view();
+	}
+
+    public function delete($queue_id)
+    {
+    $item = $this->Queue_model->delete($queue_id);
+    $this->session->set_flashdata('success', "Deleted Successfully!");
+    redirect(base_url('admin'));
+    }
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public function role()

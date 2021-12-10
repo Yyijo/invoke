@@ -10,7 +10,6 @@
         <div class="col-lg-6">
             <?= form_error('menu', '<div class="alert alert-danger" role="alert">', '</div>'); ?>
 
-       
 
             <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#newMenuModal">Add New Menu</a>
 

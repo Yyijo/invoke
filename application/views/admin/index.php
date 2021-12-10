@@ -27,28 +27,27 @@
                   
                     </tr>
                 </thead>
+
+            
                 <tbody>
-                    <?php $i = 1; ?>
-                    <?php foreach ($queue_id as $q) : ?>
+
+                    <?php foreach ($queues as $queue): ?>
                     <tr>
-                        <th scope="row"><?= $q['queue_id']; ?></th>
-                        <td><?= $q['cust_id']; ?></td>
-                        <td><?= $q['queue_joinqueuetime']; ?></td>
-                        <td><?= $q['queue_waitingtime']; ?></td>
-                        <td><?= $q['res_business_id']; ?></td>
-                        <td><?= $q['queue_total_people_queue']; ?></td>
-
-
+                        <td><?= $queue->queue_id; ?></td>
+                        <td><?= $queue->cust_id; ?></td>
+                        <td><?= $queue->queue_joinqueuetime; ?></td>
+                        <td><?= $queue->queue_waitingtime; ?></td>
+                        <td><?= $queue->res_business_id; ?></td>
+                        <td><?= $queue->queue_total_people_queue; ?></td>
                         <td>
-                            <a href="" class="badge badge-success">certify</a>
-                            <a href="" class="badge badge-danger">remove</a>
+                            <a href="" class="badge badge-success">certify</a>                      
+                            <a href="<?php echo base_url('admin/delete/'. $queue->queue_id) ?>" class="badge badge-danger" onclick="return confirm('Are you sure?');">remove</a>
                         </td>
+                        
                     </tr>
-                    <?php $i++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
-
 
         </div>
     </div>
