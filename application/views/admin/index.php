@@ -40,7 +40,7 @@
                         <td><?= $queue->res_business_id; ?></td>
                         <td><?= $queue->queue_total_people_queue; ?></td>
                         <td>
-                            <a href="" class="badge badge-success">certify</a>                      
+                            <a href="<?php echo base_url('admin/certify/'. $queue->queue_id) ?>" class="badge badge-success" onclick="return confirm('Are you sure?');">certify</a>                      
                             <a href="<?php echo base_url('admin/delete/'. $queue->queue_id) ?>" class="badge badge-danger" onclick="return confirm('Are you sure?');">remove</a>
                         </td>
                         

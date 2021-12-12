@@ -4,12 +4,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Queue_model extends CI_Model
 {
 
-    protected $table = 'vq_queue';
-
-    protected $primaryKey = 'queue_id';
-
-    protected $allowedFields = ['name', 'email'];
-    
 
     function __construct() {
         parent::__construct();
@@ -18,8 +12,6 @@ class Queue_model extends CI_Model
 
 
     //guestbook di atas
-    
-    
     public function get_all()
     {
         $queues = $this->db->get('vq_queue')->result();
@@ -37,6 +29,24 @@ class Queue_model extends CI_Model
     {
         $result = $this->db->delete('vq_queue', array('queue_id' => $queue_id));
         return $result;
+    }
+
+    public function certify($queue_id)
+    {
+         // Which queue do we want to get from the queue Table?
+        $this->db->where('queue_id', $queue_id);
+        $query = $this->db->get('vq_queue');
+        // Did we get a result? i.e was a valid queue id passed in?
+        if($query !== false) {
+            
+            $row = $query->row();
+            
+           // $row = $query->getRow();
+
+            $this->db->insert('vq_queue_history', $row);
+        } else {
+       // Do nothing or handle the case where an illegal number was used...
+        }
     }
 
 }

@@ -17,7 +17,6 @@ class Admin extends CI_Controller
 
 
     
-//This is for QueueList Dashboard
     public function index()
     {
 
@@ -33,38 +32,57 @@ class Admin extends CI_Controller
             $this->load->view('templates/topbar', $data);
             $this->load->view('admin/index.php', $data);
             $this->load->view('templates/footer');
-		
+
     }
 
-
-
-    public function remove() {	
-		$qid = $this->uri->segment(3);
-		$this->Queue_model->delete($qid);
-		$this->view();
-	}
-
+    //This is for Delete function in Queue Dashboard
     public function delete($queue_id)
     {
     $item = $this->Queue_model->delete($queue_id);
     $this->session->set_flashdata('success', "Deleted Successfully!");
     redirect(base_url('admin'));
     }
- 
+
+
+    //This is for Certify in Queue Dashboard
+    public function certify($queue_id){
+
+            
+            //function untuk insert queue
+            $data['title'] = 'Queue List';
+            $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+           
+            $item = $this->Queue_model->certify($queue_id);
+            $this->session->set_flashdata('success', "Certified Successfully!");
+            
+
+            
+            //SIMPAN DISINI IF NEEDED IN THE FUTURE
+
+            // $queue is passed in via the URL.
+            // $this->queue_model->certify($queue_id); 
+
+            // $num = $this->db->query("SELECT MAX(queue_id) AS queue_id FROM vq_queue")->fetch()['queue_id'];
+            // $num = ltrim($num, 'QH')+1; #142
+            // $queue_history = 'QH'.$num ;
+
+            // qhistoryid = QH + qid
+            // $data['queue_history_id'] = $queue_history ->result_array();
+            
+            // $data['queue'] = $this->db->get($queue_id)->result_array();
+    
+            // $this->db->insert('vq_queue_history', $data);
+            // $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> menu added!</div>');
 
 
 
-
-
-
-
-
-
-
-
-
-
-
+            // function utk delete queue
+            $item = $this->Queue_model->delete($queue_id);
+            $this->session->set_flashdata('success', "Deleted Successfully!");
+            redirect(base_url('admin'));
+    }
+    
+   
 
 
     public function role()
