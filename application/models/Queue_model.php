@@ -10,14 +10,13 @@ class Queue_model extends CI_Model
     }
 
 
-
-    //guestbook di atas
     public function get_all()
     {
         $queues = $this->db->get('vq_queue')->result();
         return $queues;
     }
 
+    //get each record
     public function get($queue_id)
     {
         $queue = $this->db->get_where('vq_queue', ['queue_id' => $queue_id ])->row();
