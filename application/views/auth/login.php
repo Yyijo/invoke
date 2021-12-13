@@ -1,3 +1,20 @@
+<br><br>
+<div>
+    <style>
+        h1 {
+            text-align: center;
+            color: black;
+        }
+
+        roundcorner {
+            border-radius: 20%;
+        }
+    </style>
+
+
+
+    <!-- <h1 style="text-align: center"><b>Welcome to VQ System</b></h1><br> -->
+</div>
 <div class="container">
 
     <!-- Outer Row -->
@@ -12,8 +29,17 @@
                         <div class="col-lg">
                             <div class="p-5">
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Login Page</h1>
-                                </div>
+                                    <img src="assets\logo\vqlogo.png" alt="logo" style="width:100px;height:100px;">
+
+                                    <style>
+                                        img {
+                                            border-radius: 20%;
+                                        }
+                                    </style><br><br>
+                                    <br>
+                                    <h1 class="h1 text-gray-900 mb-4">Let's queue virtually! &#128516;</h1>
+                                    <p class="h6 text-gray-900 mb-4">To queue with us please sign in with your account</p>
+                                </div><br>
 
                                 <?= $this->session->flashdata('message'); ?>
 
@@ -32,10 +58,10 @@
                                 </form>
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="<?= base_url('auth/forgotpassword'); ?>">Forgot Password?</a>
+
                                 </div>
                                 <div class="text-center">
-                                    <a class="small" href="<?= base_url('auth/registration'); ?>">Create an Account!</a>
+                                    <a class="small" href="<?= base_url('auth/registration'); ?>">New to VQ? Let's create an Account!</a>
                                 </div>
                             </div>
                         </div>
@@ -47,4 +73,4 @@
 
     </div>
 
-</div> 
+</div>

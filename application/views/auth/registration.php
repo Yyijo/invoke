@@ -7,7 +7,11 @@
                 <div class="col-lg">
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                            <br>
+
+                            <!-- <h1 class="h4 text-gray-900 mb-4">Register an account</h1> -->
+                            <h1 class="h1 text-gray-900 mb-4">Hello, Friend &#128515; </h1>
+                            <p class="h5 text-gray-900 mb-4">register now and start queuing with us!</p>
                         </div>
 
                         <!-- Form register-->
@@ -35,7 +39,7 @@
                         </form>
                         <hr>
                         <div class="text-center">
-                            <a class="small" href="<?= base_url('auth/forgotpassword'); ?>">Forgot Password?</a>
+
                         </div>
                         <div class="text-center">
                             <a class="small" href="<?= base_url('auth'); ?>">Already have an account? Login!</a>
@@ -46,4 +50,4 @@
         </div>
     </div>
 
-</div> 
+</div>
