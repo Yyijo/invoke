@@ -22,7 +22,7 @@ class Admin extends CI_Controller
 
         $QueueModel = new Queue_model();
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['title'] = 'Queue List';
+        $data['title'] = 'Queue Dashboard';
 
         $data['queues'] = $this->Queue_model->get_all();
 
@@ -49,7 +49,7 @@ class Admin extends CI_Controller
 
             
             //function untuk insert queue
-            $data['title'] = 'Queue List';
+            $data['title'] = 'Queue Dashboard';
             $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
            
             $item = $this->Queue_model->certify($queue_id);

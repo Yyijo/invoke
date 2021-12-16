@@ -87,7 +87,7 @@ class Auth extends CI_Controller
             $this->load->view('auth/registration');
             $this->load->view('templates/auth_footer');
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">GAGAL! your account has been created. Please activate your account</div>');
+            // $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Something went wrong.</div>');
             
         } else { //form validasi berhasil didaftarkan
             $email = $this->input->post('email', true);
@@ -115,7 +115,7 @@ class Auth extends CI_Controller
             // $this->db->insert('user_token', $user_token);
 
            #$this->_sendEmail($token, 'verify');
-           $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created. Please activate your account</div>');
+           $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation your account has been created!</div>');
            
             redirect('auth');
         }
